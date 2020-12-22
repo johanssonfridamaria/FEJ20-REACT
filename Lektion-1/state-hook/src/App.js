@@ -63,7 +63,7 @@ function App() {
         })} */}
 
         {posts.map(post => (
-          isLoggedIn ? <Post key={post.id} title={post.title} body={post.body} /> : ''
+          isLoggedIn ? <Post key={post.id} title={post.title} body={post.body} login={login} /> : ''
         ))}
 
       </div>

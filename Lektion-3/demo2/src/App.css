@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  width: 80%;
+  margin: auto;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: darkslategray;
+}
+.navbar ul {
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+  list-style: none;
+}
+.navbar ul li a {
+  display: inline-block;
+  padding: 1rem;
+}
+.navbar ul li a:hover {
+  background: rgba(0,0,0,0.15);
+}

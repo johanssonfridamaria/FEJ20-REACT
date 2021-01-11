@@ -18,7 +18,7 @@ function App() {
 
       <div className="bg" style={{background: theme.bg}}>
         <div className="container">
-
+          
           <PostsContextProvider>
             <Switch>
               {/* <Route exact path="/">

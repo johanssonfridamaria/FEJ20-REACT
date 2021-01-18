@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import News from './views/News';
 import Create from './views/Create';
 import Login from './views/Login';
+import PostDetails from './views/PostDetails';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/" component={News} />
           <ProtectedRoute exact path="/create" component={Create} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/posts/:id" component={PostDetails} />
         </Switch>
       </div>
 

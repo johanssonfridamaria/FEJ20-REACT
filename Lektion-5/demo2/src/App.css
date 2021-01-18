@@ -44,3 +44,18 @@ body, html {
   text-decoration: underline;
   color: orange;
 }
+.post {
+  box-shadow: 5px 5px 10px 0 #333;
+  padding: 2rem;
+  margin: 2rem 0;
+  border-radius: 10px;
+}
+.post a {
+  text-decoration: none;
+  color: #333;
+}
+.post h2 {
+  color: orange;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}

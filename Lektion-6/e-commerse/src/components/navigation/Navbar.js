@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom';
+import ShoppingCart from '../shoppingCart/ShoppingCart';
 
 const Navbar = () => {
   return (
@@ -46,8 +47,8 @@ const Navbar = () => {
                   <span className="badge rounded-pill badge-notification bg-danger">1</span>
                 </span>
                 {/* <!-- Dropdown menu --> */}
-                <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  SHOPPINGCART
+                <ul className="dropdown-menu dropdown-menu-end shopping-cart" aria-labelledby="navbarDropdown">
+                  <ShoppingCart />
                 </ul>
               </li>
             

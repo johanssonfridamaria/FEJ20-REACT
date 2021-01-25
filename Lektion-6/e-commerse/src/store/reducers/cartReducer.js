@@ -62,6 +62,8 @@ const cartReducer = (state = initState, action) => {
 
       localStorage.removeItem('Z_vwiH0dzBnnTI9r19Plpi2jLCYe82rI8');
 
+      return state
+
     default:
       let cart = jwt.decode(localStorage.getItem('Z_vwiH0dzBnnTI9r19Plpi2jLCYe82rI8'))
 

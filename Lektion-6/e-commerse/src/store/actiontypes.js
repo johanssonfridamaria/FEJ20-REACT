@@ -8,6 +8,9 @@ const actiontypes = () => {
       remove: 'REMOVE_FROM_CART',
       delete: 'DELETE_PRODUCT',
       clear: 'CLEAR_CART'
+    },
+    orders: {
+      set: 'SET_ORDERS'
     }
   }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import CartProduct from './CartProduct';
 import { useSelector, useDispatch } from 'react-redux';
-import { clearCart } from '../../store/actions/cartActions';
+import { clearCart, chekoutCart } from '../../store/actions/cartActions';
 
 const ShoppingCart = () => {
 
@@ -10,6 +10,11 @@ const ShoppingCart = () => {
   const clear = e => {
     e.stopPropagation();
     dispatch(clearCart());
+  }
+
+  const checkout = e => {
+    e.stopPropagation();
+    dispatch(chekoutCart(shoppingCart));
   }
 
   const shoppingCart = useSelector(state => state.cartReducer.shoppingCart);
@@ -45,7 +50,7 @@ const ShoppingCart = () => {
         </div>
         <div>
           <button className="btn btn-info me-2" onClick={clear}>Clear</button>
-          <button className="btn btn-info">Chekout</button>
+          <button className="btn btn-info" onClick={checkout}>Chekout</button>
         </div>
       </div>
 

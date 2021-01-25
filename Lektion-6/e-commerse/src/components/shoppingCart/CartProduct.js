@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
-import { addToCart, removeFromCart } from '../../store/actions/cartActions';
+import { addToCart, removeFromCart, deleteProduct } from '../../store/actions/cartActions';
 
 const CartProduct = ({item}) => {
 
@@ -13,7 +13,12 @@ const CartProduct = ({item}) => {
 
   const remove = e => {
     e.stopPropagation();
-    dispatch(removeFromCart(item._id));
+    dispatch(removeFromCart(item));
+  }
+
+  const del = e => {
+    e.stopPropagation();
+    dispatch(deleteProduct(item._id))
   }
 
   return (
@@ -32,7 +37,7 @@ const CartProduct = ({item}) => {
         <div className="buttons">
           <button className="btn btn-sm btn-grey" onClick={remove}>-</button>
           <button className="btn btn-sm btn-grey" onClick={add}>+</button>
-          <button className="btn btn-sm btn-danger"><i className="fas fa-trash"></i></button>
+          <button className="btn btn-sm btn-danger" onClick={del}><i className="fas fa-trash"></i></button>
         </div>
       </div>
 

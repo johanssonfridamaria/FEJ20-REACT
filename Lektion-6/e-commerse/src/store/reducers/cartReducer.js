@@ -1,4 +1,6 @@
 import actiontypes from '../actiontypes';
+import jwt from 'jsonwebtoken';
+const secretKey = 'ZvwiH0dzBnnTI9r19Plpi2jLCYe82rI8'
 
 const initState = {
   shoppingCart: [],
@@ -25,15 +27,47 @@ const cartReducer = (state = initState, action) => {
 
       state.totalCartQuantity = getTotalQuantity(state.shoppingCart);
       state.totalCartAmount = getTotalAmount(state.shoppingCart);
+
+      localStorage.setItem('Z_vwiH0dzBnnTI9r19Plpi2jLCYe82rI8', jwt.sign(state, secretKey));
+
       return state
 
     case actiontypes().cart.remove:
-      let _p = state.shoppingCart.find(product => product._id === action.payload)
 
-      console.log(_p)
+      action.payload.quantity === 1
+      ? state.shoppingCart = state.shoppingCart.filter(product => product._id !== action.payload._id)
+      : action.payload.quantity -= 1
+
+      state.totalCartQuantity = getTotalQuantity(state.shoppingCart);
+      state.totalCartAmount = getTotalAmount(state.shoppingCart);
+
+      localStorage.setItem('Z_vwiH0dzBnnTI9r19Plpi2jLCYe82rI8', jwt.sign(state, secretKey));
+
       return state
 
+    case actiontypes().cart.delete:
+      state.shoppingCart = state.shoppingCart.filter(item => item._id !== action.payload);
+
+      state.totalCartQuantity = getTotalQuantity(state.shoppingCart);
+      state.totalCartAmount = getTotalAmount(state.shoppingCart);
+
+      localStorage.setItem('Z_vwiH0dzBnnTI9r19Plpi2jLCYe82rI8', jwt.sign(state, secretKey));
+
+      return state
+
+    case actiontypes().cart.clear:
+      state.shoppingCart = []
+      state.totalCartAmount = 0
+      state.totalCartQuantity = 0
+
+      localStorage.removeItem('Z_vwiH0dzBnnTI9r19Plpi2jLCYe82rI8');
+
     default:
+      let cart = jwt.decode(localStorage.getItem('Z_vwiH0dzBnnTI9r19Plpi2jLCYe82rI8'))
+
+      if(cart)
+        state = cart
+
       return state
   }
 }

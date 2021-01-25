@@ -1,8 +1,16 @@
 import React from 'react';
 import CartProduct from './CartProduct';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { clearCart } from '../../store/actions/cartActions';
 
 const ShoppingCart = () => {
+
+  const dispatch = useDispatch();
+
+  const clear = e => {
+    e.stopPropagation();
+    dispatch(clearCart());
+  }
 
   const shoppingCart = useSelector(state => state.cartReducer.shoppingCart);
   const totalCartAmount = useSelector(state => state.cartReducer.totalCartAmount);
@@ -35,7 +43,10 @@ const ShoppingCart = () => {
           </div>
           <small className="text-muted">ink. vat</small>
         </div>
-        <button className="btn btn-info">Chekout</button>
+        <div>
+          <button className="btn btn-info me-2" onClick={clear}>Clear</button>
+          <button className="btn btn-info">Chekout</button>
+        </div>
       </div>
 
     </div>

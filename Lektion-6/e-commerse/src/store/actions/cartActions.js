@@ -7,10 +7,10 @@ export const addToCart = product => {
   }
 }
 
-export const removeFromCart = id => {
+export const removeFromCart = product => {
   return {
     type: actiontypes().cart.remove,
-    payload: id
+    payload: product
   }
 }
 
@@ -18,5 +18,11 @@ export const deleteProduct = id => {
   return {
     type: actiontypes().cart.delete,
     payload: id
+  }
+}
+
+export const clearCart = () => {
+  return {
+    type: actiontypes().cart.clear
   }
 }

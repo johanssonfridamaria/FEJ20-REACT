@@ -1,23 +1,38 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { addToCart, removeFromCart } from '../../store/actions/cartActions';
 
 const CartProduct = ({item}) => {
+
+  const dispatch = useDispatch();
+
+  const add = e => {
+    e.stopPropagation();
+    dispatch(addToCart(item));
+  }
+
+  const remove = e => {
+    e.stopPropagation();
+    dispatch(removeFromCart(item._id));
+  }
+
   return (
     <div>
 
       <div className="p-2 d-flex justify-content-between align-items-center">
 
         <div className="d-flex align-items-center">
-          <img src="https://mdbootstrap.com/img/new/standard/city/042.jpg" alt="product" className="img-fluid cart-image" />
+          <img src={item.image} alt="product" className="img-fluid cart-image" />
           <div>
-            <div><strong></strong></div>
-            <div><small>2 x 1299 SEK</small></div>
+            <div><strong>{ item.name }</strong></div>
+            <div><small>{ item.quantity } x { item.price } SEK</small></div>
           </div>
         </div>
 
         <div className="buttons">
-          <button className="btn btn-sm btn-grey">-</button>
-          <button className="btn btn-sm btn-grey">+</button>
-          <button className="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+          <button className="btn btn-sm btn-grey" onClick={remove}>-</button>
+          <button className="btn btn-sm btn-grey" onClick={add}>+</button>
+          <button className="btn btn-sm btn-danger"><i className="fas fa-trash"></i></button>
         </div>
       </div>
 

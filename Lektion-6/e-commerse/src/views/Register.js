@@ -1,11 +1,12 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../store/actions/userActions';
 
 const Register = () => {
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const firstName = useRef();
   const lastName = useRef();
@@ -20,6 +21,9 @@ const Register = () => {
         lastName: lastName.current.value,
         email: email.current.value,
         password: password.current.value
+      }, () => {
+        try{history.push(history.location.state.from.pathname)}
+        catch{history.push('/')}
       }))
     }
   }

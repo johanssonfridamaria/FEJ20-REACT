@@ -1,19 +1,23 @@
 import { useRef } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { login } from '../store/actions/userActions';
 
 const Login = () => {
 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const email = useRef();
   const password = useRef();
 
   const handleSubmit = e => {
     e.preventDefault();
+    dispatch(login(email.current.value, password.current.value, () => {
+      try{history.push(history.location.state.from.pathname)}
+      catch{history.push('/')}
+    }))
 
-    dispatch(login(email.current.value, password.current.value))
   }
 
 

@@ -48,6 +48,14 @@ const Navbar = () => {
               </li>
 
               {
+                user && user === 'admin' && (
+                  <li className="nav-item">
+                    <NavLink exact className="nav-link" to="/admin">Admin</NavLink>
+                  </li>
+                )
+              }
+
+              {
                 !user && (
                   <li className="nav-item">
                     <NavLink exact className="nav-link" to="/login">Login</NavLink>

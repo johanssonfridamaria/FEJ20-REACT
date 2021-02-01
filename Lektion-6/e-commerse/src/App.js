@@ -7,7 +7,9 @@ import Orders from './views/Orders';
 import OrderDetails from './views/OrderDetails';
 import Login from './views/Login';
 import Register from './views/Register';
-import { UserRoute } from './routes/ProtectedRoute';
+import { AdminRoute, UserRoute } from './routes/ProtectedRoute';
+import Admin from './views/Admin';
+import AdminOrderDetails from './views/AdminOrderDetails';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <UserRoute exact path="/orders/:id" component={OrderDetails} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
+          <AdminRoute exact path="/admin" component={Admin} />
+          <AdminRoute exact path="/admin/order/:id" component={AdminOrderDetails} />
         </Switch>
       </div>
 

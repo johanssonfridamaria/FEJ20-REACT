@@ -4,3 +4,6 @@
 .cart-image{
   width: 90px;
 }
+.pointer {
+  cursor: pointer;
+}

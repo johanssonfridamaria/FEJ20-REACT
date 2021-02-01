@@ -28,16 +28,18 @@ export const clearCart = () => {
   }
 }
 
-export const chekoutCart = cart => {
+export const chekoutCart = order => {
   return async (dispatch, getState) => {
     let id = getState().userReducer.userId;
     // console.log(id)
-    if(cart.length > 0) {
-      let order = {
+    if(order.shoppingCart.length > 0) {
+      let _order = {
         userId: id,
-        cart
+        cart: order.shoppingCart,
+        sum: order.totalCartAmount,
+        status: 'Not processed'
       }
-      const res = await axios.post('http://localhost:9998/orders', order)
+      const res = await axios.post('http://localhost:9998/orders', _order)
       // console.log(res);
       if(res.status === 201) {
         dispatch(clearCart());

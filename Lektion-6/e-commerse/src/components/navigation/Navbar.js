@@ -1,11 +1,19 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom';
 import ShoppingCart from '../shoppingCart/ShoppingCart';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUser } from '../../store/actions/userActions';
 
 const Navbar = () => {
 
+  const dispatch = useDispatch()
+
   let totalQuantity = useSelector(state => state.cartReducer.totalCartQuantity)
+  let user = useSelector(state => state.userReducer.role)
+
+  const logout = () => {
+    dispatch(setUser())
+  }
 
   return (
     // <!-- Navbar -->
@@ -38,9 +46,32 @@ const Navbar = () => {
               <li className="nav-item">
                 <NavLink exact className="nav-link" to="/products">Products</NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink exact className="nav-link" to="/orders">Orders</NavLink>
-              </li>
+
+              {
+                !user && (
+                  <li className="nav-item">
+                    <NavLink exact className="nav-link" to="/login">Login</NavLink>
+                  </li>
+                )
+              }
+
+              {
+                user && (
+                  <li className="nav-item">
+                    <NavLink exact className="nav-link" to="/orders">Orders</NavLink>
+                  </li>
+                )
+              }
+
+              {
+                user && (
+                  <li className="nav-item">
+                    <span className="nav-link pointer" onClick={logout}>Logout</span>
+                  </li>
+                )
+              }
+
+
               {/* <!-- Navbar dropdown --> */}
               <li className="nav-item dropdown">
                 <span

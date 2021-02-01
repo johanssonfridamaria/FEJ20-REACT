@@ -14,7 +14,12 @@ const ShoppingCart = () => {
 
   const checkout = e => {
     e.stopPropagation();
-    dispatch(chekoutCart(shoppingCart));
+    let order = {
+      shoppingCart,
+      totalCartAmount
+    }
+
+    dispatch(chekoutCart(order));
   }
 
   const shoppingCart = useSelector(state => state.cartReducer.shoppingCart);

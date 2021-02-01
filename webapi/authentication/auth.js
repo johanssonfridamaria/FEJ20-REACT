@@ -3,8 +3,8 @@ require('dotenv/config')
 
 const secretKey = process.env.SECRET_KEY;
 
-exports.generateToken = id => {
-    return jwt.sign({ id: id }, secretKey, { expiresIn: '1h' })
+exports.generateToken = user => {
+    return jwt.sign({ user: user }, secretKey, { expiresIn: '1h' })
 }
 // Token blir skickad som "Bearer <token>"
 exports.verifyToken = (req, res, next) => {

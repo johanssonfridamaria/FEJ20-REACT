@@ -10,7 +10,11 @@ const actiontypes = () => {
       clear: 'CLEAR_CART'
     },
     orders: {
-      set: 'SET_ORDERS'
+      set: 'SET_ORDERS',
+      setOne: 'SET_ORDER'
+    },
+    user: {
+      set: 'SET_USER'
     }
   }
 }
